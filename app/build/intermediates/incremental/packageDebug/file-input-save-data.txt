@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Nov 20 22:56:18 IST 2016
+#Sun Nov 20 23:21:12 IST 2016
 122.file=/Users/mkalana/AndroidStudioProjects/SimpleExpenseManager/app/build/intermediates/res/resources-debug.ap_/res/anim/abc_fade_in.xml
 60.set=ANDROID_RESOURCE
 129.file=/Users/mkalana/AndroidStudioProjects/SimpleExpenseManager/app/build/intermediates/res/resources-debug.ap_/res/drawable-xxhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png
