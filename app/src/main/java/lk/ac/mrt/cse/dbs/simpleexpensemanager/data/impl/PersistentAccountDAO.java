@@ -2,11 +2,12 @@ package lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl;
 
 
 
-import android.my_db.Cursor;
-import android.my_db.sqlite.SQLiteDatabase;
-import android.my_db.sqlite.SQLiteStatement;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.List;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.ExpenseType;
 
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.AccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.exception.InvalidAccountException;
@@ -23,7 +24,7 @@ public class PersistentAccountDAO implements AccountDAO {
                 Cursor results = my_db.rawQuery("SELECT Account_no FROM Account",null);
                 List<String> accounts = new ArrayList<String>();
 
-        if(resultSet.moveToFirst()) {
+        if(results.moveToFirst()) {
             do {
                 accounts.add(results.getString(results.getColumnIndex("Account_no")));
 
@@ -34,16 +35,16 @@ public class PersistentAccountDAO implements AccountDAO {
     }
 
     @Override
-    public List<Account> getAccList() {
+    public List<Account> getAccountsList() {
                 Cursor results = my_db.rawQuery("SELECT * FROM Account",null);
                 List<Account> accounts = new ArrayList<Account>();
 
-                if(resultSet.moveToFirst()) {
+                if(results.moveToFirst()) {
                         do {
                                 Account account = new Account(results.getString(results.getColumnIndex("Account_no")),
-                                                resultSet.getString(resultSet.getColumnIndex("Branch")),
-                                                resultSet.getString(resultSet.getColumnIndex("Name")),
-                                                resultSet.getDouble(resultSet.getColumnIndex("Initial_deposit")));
+                                                results.getString(results.getColumnIndex("Branch")),
+                                                results.getString(results.getColumnIndex("Name")),
+                                                results.getDouble(results.getColumnIndex("Initial_deposit")));
                                                 accounts.add(account);
                             } while (results.moveToNext());
                     }
@@ -58,11 +59,11 @@ public class PersistentAccountDAO implements AccountDAO {
                 Account account = null;
         if(results.moveToFirst()) {
                         do {
-                                account = new Account(results.getString(resultSet.getColumnIndex("Account_no")),
-                                        results.getString(resultSet.getColumnIndex("Branch")),
-                                        results.getString(resultSet.getColumnIndex("Name")),
-                                        results.getDouble(resultSet.getColumnIndex("Initial_deposit")));
-                           } while (resultSet.moveToNext());
+                                account = new Account(results.getString(results.getColumnIndex("Account_no")),
+                                        results.getString(results.getColumnIndex("Branch")),
+                                        results.getString(results.getColumnIndex("Name")),
+                                        results.getDouble(results.getColumnIndex("Initial_deposit")));
+                           } while (results.moveToNext());
         }
 
                         return account;
@@ -74,7 +75,7 @@ public class PersistentAccountDAO implements AccountDAO {
                 SQLiteStatement statement = my_db.compileStatement(sql);
 
                 statement.bindString(1, account.getAccountNo());
-                statement.bindString(2, account.getBrachName());
+                statement.bindString(2, account.getBankName());
                 statement.bindString(3, account.getAccountHolderName());
                 statement.bindDouble(4, account.getBalance());
 
