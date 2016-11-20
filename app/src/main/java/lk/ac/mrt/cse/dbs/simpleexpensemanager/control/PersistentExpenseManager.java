@@ -3,10 +3,11 @@ package lk.ac.mrt.cse.dbs.simpleexpensemanager.control;
 import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Account;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.AccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.PersistentAccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.PersistentTransactionDAO;
+
 
 /**
  * Created by mkalana on 11/20/16.
@@ -24,7 +25,7 @@ public class PersistentExpenseManager extends ExpenseManager {
 
     @Override
     public void setup(){
-               SQLiteDatabase mydatabase = ctx.openOrCreateDatabase("expenses5", ctx.MODE_PRIVATE, null);
+               SQLiteDatabase mydatabase = ctx.openOrCreateDatabase("140583B", ctx.MODE_PRIVATE, null);
 
 
 
